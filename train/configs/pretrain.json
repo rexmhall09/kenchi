@@ -1,0 +1,133 @@
+{
+  "name": "kenchi-1-pretrain",
+  "model": {
+    "vocab_size": 50304,
+    "d_model": 1280,
+    "n_head": 20,
+    "layout": "AMAMAMAMAMAMAMAMAMAMAM",
+    "seq_len": 2048,
+    "u_head": true
+  },
+  "total_tokens": 8300000000,
+  "warmup_tokens": 150000000,
+  "peak_lr": 0.0004,
+  "final_lr_frac": 0.05,
+  "lr_shape": "cosine",
+  "weight_decay": 0.1,
+  "grad_clip": 1.0,
+  "compile": true,
+  "amp": "bf16",
+  "seed": 0,
+  "num_threads": 8,
+  "rows_per_step": 96,
+  "log_every": 50,
+  "val_every_tokens": 500000000,
+  "val_path": "data/val.bin",
+  "val_n_tokens": 1048576,
+  "val_batch_rows": 8,
+  "ckpt_every_s": 1200,
+  "ckpt_keep_n": 2,
+  "ckpt_dir": "ckpts/kenchi-v1",
+  "data_base_dir": ".",
+  "time_budget_s": 0,
+  "sources": {
+    "fineweb_edu": {
+      "pattern": "data/shards_v2/finewebedu_train_*.bin",
+      "weight": 0.74
+    },
+    "ja_web": {
+      "pattern": "data/shards/ja_web/train_*.bin",
+      "weight": 0.08
+    },
+    "es_web": {
+      "pattern": "data/shards/es_web/train_*.bin",
+      "weight": 0.023
+    },
+    "zh_web": {
+      "pattern": "data/shards/zh_web/train_*.bin",
+      "weight": 0.012
+    },
+    "multi_web": {
+      "pattern": "data/shards/multi_web/train_*.bin",
+      "weight": 0.018
+    },
+    "code": {
+      "pattern": "data/shards/code/train_*.bin",
+      "weight": 0.028
+    },
+    "math": {
+      "pattern": "data/shards/math/train_*.bin",
+      "weight": 0.037
+    },
+    "cosmo": {
+      "pattern": "data/shards/cosmo/train_*.bin",
+      "weight": 0.062
+    },
+    "instr": {
+      "pattern": "data/shards/instr/train_*.bin",
+      "weight": 0.14
+    },
+    "qa_search": {
+      "pattern": "data/shards/qa_search/train_*.bin",
+      "weight": 0.016
+    },
+    "fc": {
+      "pattern": "data/shards/fc/train_*.bin",
+      "weight": 0.018
+    },
+    "chat": {
+      "pattern": "data/shards/chat/train_*.bin",
+      "weight": 0.001
+    },
+    "oasst": {
+      "pattern": "data/shards/oasst/train_*.bin",
+      "weight": 0.005
+    },
+    "values": {
+      "pattern": "data/shards/values/train_*.bin",
+      "weight": 0.003
+    },
+    "values_ja": {
+      "pattern": "data/shards/values_ja/train_*.bin",
+      "weight": 0.0005
+    }
+  },
+  "phases": [
+    {
+      "name": "main",
+      "tokens": 7636000000,
+      "weights": {
+        "fineweb_edu": 0.74,
+        "ja_web": 0.08,
+        "es_web": 0.023,
+        "zh_web": 0.012,
+        "multi_web": 0.018,
+        "code": 0.028,
+        "math": 0.037,
+        "cosmo": 0.062
+      }
+    },
+    {
+      "name": "anneal",
+      "tokens": 664000000,
+      "weights": {
+        "fineweb_edu": 0.5823353293413174,
+        "ja_web": 0.0499001996007984,
+        "es_web": 0.0249500998003992,
+        "zh_web": 0.012974051896207584,
+        "multi_web": 0.011976047904191617,
+        "cosmo": 0.07984031936127745,
+        "code": 0.0249500998003992,
+        "math": 0.029940119760479042,
+        "instr": 0.13972055888223553,
+        "qa_search": 0.015968063872255488,
+        "fc": 0.017964071856287425,
+        "chat": 0.000998003992015968,
+        "oasst": 0.00499001996007984,
+        "values": 0.0029940119760479044,
+        "values_ja": 0.000499001996007984
+      }
+    }
+  ],
+  "run_id": "kenchi-v1"
+}

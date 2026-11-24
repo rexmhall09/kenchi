@@ -1,0 +1,26 @@
+# weights and model files never go into git (GitHub refuses files over 100 MB); they live in the
+# Hugging Face folder next to this repository
+*.safetensors
+*.npz
+*.bin
+*.gguf
+weights/
+# Python, virtual environments, caches, logs
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+*.log
+.DS_Store
+
+# Secrets and local agent/session files
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+*.jsonl
+*.pem
+*.key
+*credentials*
+.relay_token
