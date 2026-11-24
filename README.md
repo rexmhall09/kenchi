@@ -1,5 +1,7 @@
 # Kenchi 1
 
+[Code on GitHub](https://github.com/rexmhall09/kenchi) · [Weights on Hugging Face](https://huggingface.co/rexmhall09/kenchi)
+
 Kenchi (謙知, "humble knowledge") is a small language model I made, with about
 500 million parameters. The goal of Kenchi is that it is the smallest model that
 can use tools and tell you when it does not know.
